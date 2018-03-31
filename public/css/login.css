@@ -1,0 +1,40 @@
+/*  */
+/* SIGIN/LOGIN */
+/*  */
+.mobile-container {
+    background-color: #019AE8;
+}
+
+input {
+    background-color: transparent;
+    border: none;
+}
+
+.form-control {
+    color: #fff;
+}
+
+.md-form label, .md-form label .active {
+    color: #fff;
+}
+
+.md-form input, .md-form input .active {
+    color: #fff;
+}
+
+input:focus::-webkit-input-placeholder {
+     color: #fff;
+}
+
+.form-control:focus, ::placeholder, .active  {
+    color: #fff;
+}
+
+.md-form input[type='email']:focus:not([readonly]), .md-form input[type=password]:focus:not([readonly]), .md-form input[type='text']:focus:not([readonly])  {
+    border-bottom: 1px solid #fff;
+    color: #fff;
+}
+
+.md-form input[type='email']:focus:not([readonly])+label, md-form input[type='password']:focus:not([readonly])+label, .md-form input[type='text']:focus:not([readonly])+label   {
+    color: #fff;
+}

@@ -1,0 +1,88 @@
+/*  */
+/* GENERAL */
+/*  */
+
+body {
+    background-color: #E4E7E9;
+}
+
+.mobile-container {
+    width: 375px;
+    min-height: 667px;
+    background-color: #FFF;
+}
+
+.inner-mobile-container {
+    width: 90%;
+}
+
+.status-bar {
+    width: inherit;
+    position:fixed;
+    margin-top: 0;
+    z-index: 100000;
+}
+
+.noob-color {
+    background-color: #019AE8;
+}
+
+.noob-color-font {
+    color: #019AE8;
+}
+
+
+/*  */
+/* HEADERNAV */
+/*  */
+
+.headernav {
+    width: inherit;
+    position:fixed;
+    margin-top: 24px;
+    z-index: 100000;
+}
+
+.zmdi-search {
+    color: #FFF;
+}
+
+
+/*  */
+/* FOOTER NAV */
+/*  */
+
+.footernav {
+    width: inherit;
+    position:fixed;
+    bottom: 0px;
+    z-index: 100000;
+    background-color: #FAFAFA;
+}
+
+.footer-icon {
+    font-size: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.footer-icon-inactive {
+    color: #7F7F7F;
+}
+
+.footernav a {
+    color: #7F7F7F;
+}
+
+/*  */
+/* SEARCH RESULT */
+/*  */
+
+.zmdi-caret-up {
+    padding-bottom: 0;
+    font-size: 30px;
+}
+.zmdi-caret-down {
+    padding-bottom: 0;
+    font-size: 30px;
+}
