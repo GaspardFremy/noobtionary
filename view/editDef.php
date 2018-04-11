@@ -11,7 +11,7 @@
 <hr>
 
 <div class="inner-mobile-container m-auto">
-    <h5 class="sub-header">Add a definition</h5>
+    <h5 class="sub-header">Edit your definition</h5>
 
     <form class="pt-4">
 
@@ -34,7 +34,7 @@
         </div>
 
         <div class="text-center mt-5">
-            <input type="submit" name="" class="noob-color-font" value="SUBMIT">
+            <input type="submit" name="" class="noob-color-font" value="EDIT">
         </div>
     </form>
 <!-- end inner-mobile-container -->

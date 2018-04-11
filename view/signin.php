@@ -12,25 +12,25 @@
     <form class="pt-5">
         <!-- Material input text -->
         <div class="md-form">
-            <input type="text" id="materialFormRegisterNameEx" class="form-control">
+            <input placeholder="&zwnj;" type="text" id="materialFormRegisterNameEx" class="form-control">
             <label for="materialFormRegisterNameEx">Your name</label>
         </div>
 
         <!-- Material input email -->
-        <div class="md-form">
-            <input type="email" id="materialFormRegisterEmailEx" class="form-control">
+        <div class="md-form mt-5">
+            <input placeholder="&zwnj;" type="email" id="materialFormRegisterEmailEx" class="form-control">
             <label for="materialFormRegisterEmailEx">Your email</label>
         </div>
 
         <!-- Material input password -->
-        <div class="md-form">
-            <input type="text" id="materialFormRegisterPasswordEx" class="form-control">
+        <div class="md-form mt-5">
+            <input placeholder="&zwnj;" type="text" id="materialFormRegisterPasswordEx" class="form-control">
             <label for="materialFormRegisterPasswordEx">Your password</label>
         </div>
 
         <!-- Material input password -->
-        <div class="md-form">
-            <input type="text" id="materialFormRegisterConfirmPassword" class="form-control">
+        <div class="md-form mt-5">
+            <input placeholder="&zwnj;" type="text" id="materialFormRegisterConfirmPassword" class="form-control">
             <label for="materialFormRegisterConfirmPassword">Confirm Your password</label>
         </div>
 

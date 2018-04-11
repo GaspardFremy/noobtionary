@@ -11,26 +11,38 @@
 <hr>
 
 <div class="inner-mobile-container m-auto">
-    <h5 class="sub-header">Add a definition</h5>
+    <h5 class="sub-header">Edit account</h5>
 
     <form class="pt-4">
 
         <!-- Material input -->
         <div class="md-form pb-3">
             <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
-            <label for="inputPlaceholderEx" class="noob-color-font">Title</label>
+            <label for="inputPlaceholderEx" class="noob-color-font">name</label>
         </div>
 
         <!--Basic textarea-->
         <div class="md-form pb-3">
-            <textarea placeholder="&zwnj;" type="text" id="textareaBasic" class="form-control md-textarea" rows="3"></textarea>
-            <label for="textareaBasic">Content</label>
+            <input placeholder="&zwnj;" type="text" class="form-control">
+            <label for="textareaBasic">email</label>
         </div>
 
         <!-- Material input -->
         <div class="md-form pb-3">
             <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
-            <label for="inputPlaceholderEx">Synonym</label>
+            <label for="inputPlaceholderEx">password</label>
+        </div>
+
+        <!-- Material input -->
+        <div class="md-form pb-3">
+            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
+            <label for="inputPlaceholderEx">New password</label>
+        </div>
+
+        <!-- Material input -->
+        <div class="md-form pb-3">
+            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
+            <label for="inputPlaceholderEx">Confirm password</label>
         </div>
 
         <div class="text-center mt-5">

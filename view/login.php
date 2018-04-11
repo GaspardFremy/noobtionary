@@ -11,14 +11,14 @@
 
         <form class="pt-5">
             <!-- Material input email -->
-            <div class="md-form">
-                <input type="email" id="materialFormRegisterEmailEx" class="form-control">
+            <div class="md-form mt-5">
+                <input placeholder="&zwnj;" type="email" id="materialFormRegisterEmailEx" class="form-control">
                 <label for="materialFormRegisterEmailEx">Your email</label>
             </div>
 
             <!-- Material input password -->
-            <div class="md-form">
-                <input type="text" id="materialFormRegisterPasswordEx" class="form-control">
+            <div class="md-form mt-5">
+                <input placeholder="&zwnj;" type="text" id="materialFormRegisterPasswordEx" class="form-control">
                 <label for="materialFormRegisterPasswordEx">Your password</label>
             </div>
 

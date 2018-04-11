@@ -23,6 +23,14 @@ try {
             addDef();
         }
 
+        elseif ($_GET['action'] == 'editDef') {
+            editDef();
+        }
+
+        elseif ($_GET['action'] == 'yourDef') {
+            yourDef();
+        }
+
         elseif ($_GET['action'] == 'Definition'){
             definition();
         }
@@ -33,6 +41,18 @@ try {
 
         elseif ($_GET['action'] == 'login'){
             login();
+        }
+
+        elseif ($_GET['action'] == 'editAccount'){
+            editAccount();
+        }
+
+        elseif ($_GET['action'] == 'definition'){
+            definition();
+        }
+
+        elseif ($_GET['action'] == 'searchPage') {
+            searchPage();
         }
 
     }

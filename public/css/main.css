@@ -6,14 +6,30 @@ body {
     background-color: #E4E7E9;
 }
 
+a, a:hover, a:focus, a:active {
+    color: inherit;
+}
+
+input{
+    background-color: transparent;
+    border: none;
+}
+
 .mobile-container {
     width: 375px;
-    min-height: 667px;
+    min-height: 1000px;
     background-color: #FFF;
 }
 
 .inner-mobile-container {
     width: 90%;
+}
+
+.sub-header {
+    color: #797979;
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .status-bar {
@@ -31,6 +47,25 @@ body {
     color: #019AE8;
 }
 
+.noob-green {
+    color: #63BF94;
+}
+
+.noob-light-green {
+    color: #9ED7BC;
+}
+
+.noob-red {
+    color: #D42A2A;
+}
+
+.noob-light-red {
+    color: #E59089;
+}
+
+.noob-grey {
+    color: #9E9E9E;
+}
 
 /*  */
 /* HEADERNAV */
@@ -62,8 +97,8 @@ body {
 
 .footer-icon {
     font-size: 25px;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 18px;
+    padding-right: 18px;
 }
 
 .footer-icon-inactive {
@@ -78,11 +113,45 @@ body {
 /* SEARCH RESULT */
 /*  */
 
-.zmdi-caret-up {
-    padding-bottom: 0;
-    font-size: 30px;
+.title-def {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 400;
 }
-.zmdi-caret-down {
-    padding-bottom: 0;
-    font-size: 30px;
+
+.rank {
+    font-size: 16px;
+}
+
+/*  */
+/* DEFINITION */
+/*  */
+
+
+/*  */
+/* ADD DEFINITION */
+/*  */
+
+.md-form label, .md-form label.active  {
+    color: #019AE8;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.md-form input[type=date], .md-form input[type=datetime-local], .md-form input[type=email], .md-form input[type=number], .md-form input[type=password], .md-form input[type=search-md], .md-form input[type=search], .md-form input[type=tel], .md-form input[type=text], .md-form input[type=time], .md-form input[type=url], .md-form textarea.md-textarea {
+    border-bottom: 1px solid #019AE8;
+}
+
+.md-form input[placeholder], .md-form input[placeholder].active, .md-form textarea[placeholder]  {
+    color: #939393;
+}
+
+::placeholder {
+    color: #939393 !important;
+}
+
+/*  */
+/* YOUR DEFINITION */
+/*  */
+.modal-footer, .modal-header {
+    border: 1px solid transparent !important;
 }

@@ -5,6 +5,10 @@
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+   <meta name="theme-color" content="#db5945">
+
+
+
     <title><?= $title ?></title>
 
     <!-- Font Awesome -->
@@ -15,6 +19,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+    <!-- Roboto Mono -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,500" rel="stylesheet">
 
 
     <!-- CSS link -->
@@ -38,35 +44,30 @@
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
-                        <a class="navbar-brand " href="#">Noobtionary</a>
+                        <a class="navbar-brand title-def " href="#">Noobtionary</a>
 
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav">
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?action=newOnes">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Features</a>
+                                    <a class="nav-link" href="index.php?action=yourDef">Your Definitions</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Pricing</a>
+                                    <a class="nav-link" href="index.php?action=editAccount">Edit account</a>
                                 </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                    Dropdown link
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="#">Action</a>
-                                        <a class="dropdown-item" href="#">Another action</a>
-                                        <a class="dropdown-item" href="#">Something else here</a>
-                                    </div>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?action=settings">Settings</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php?action=logout">logout</a>
                                 </li>
                             </ul>
                         </div>
 
                         <form class="form-inline waves-effect waves-light">
-                          <i class="zmdi zmdi-search zmdi-hc-2x"></i>
+                            <a href="./index.php?action=searchPage"><i class="zmdi zmdi-search zmdi-hc-2x"></i></a>
                        </form>
                 </nav>
 
@@ -78,7 +79,7 @@
 
 
         <?php if (isset($footernav) AND $footernav === 'activate') { ?>
-            <nav class="navbar footernav">
+            <nav class="navbar footernav d-flex justify-content-between">
 
                 <a href="index.php?action=newOnes">
                     <div class="d-flex flex-column <?php if(isset($page) AND $page === 'newOnes'){echo 'noob-color-font';} ?>">
