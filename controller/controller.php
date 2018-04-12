@@ -41,7 +41,7 @@ function getEditDef($definitionID)
     require('view/editDef.php');
 }
 
-function updateDef($definitionID)
+function updateDef($id, $edit_title, $edit_content, $edit_synonym)
 {
     $editedLines = updateDefinition($id, $edit_title, $edit_content, $edit_synonym);
 
@@ -52,7 +52,6 @@ function updateDef($definitionID)
         header('Location: index.php?action=yourDef');
     }
 }
-
 
 function yourDef($authorID)
 {
@@ -77,9 +76,19 @@ function definition($definitionID)
     require('view/definition.php');
 }
 
-function editAccount()
+function editAccount($id)
 {
+    $data = getUserInfo($id);
     require('view/editAccount.php');
+}
+
+function updateAccount($id, $name, $email, $password, $new_password, $confirm_password)
+{
+    $editedLines = updateAccountInfo($id, $name, $email, $password, $new_password, $confirm_password);
+
+    if ($editedLines === false) {
+        throw new Exception('Impossible d\'éditer le compte');
+    }
 }
 
 function searchPage()

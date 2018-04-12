@@ -12,7 +12,7 @@
 
 
 <div class="inner-mobile-container m-auto">
-    <a href="index.php?action=newOnes"><i class="zmdi zmdi-long-arrow-left mt-2 mb-3"></i></a>
+    <a href="javascript:history.go(-1)"><i class="zmdi zmdi-long-arrow-left mt-2 mb-3"></i></a>
     <div class="flex-column align-items-start">
         <div class="d-flex w-100 flex-column">
         <h5 class="mb-1 title-def"><?= $definition['title'] ?></h5>

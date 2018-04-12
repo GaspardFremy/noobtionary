@@ -13,41 +13,57 @@
 <div class="inner-mobile-container m-auto">
     <h5 class="sub-header">Edit account</h5>
 
-    <form class="pt-4">
+    <form class="pt-4" method="post" action="./index.php?action=updateAccount">
 
         <!-- Material input -->
         <div class="md-form pb-3">
-            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
+            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control" name="name" value='<?=$data['name']?>'>
             <label for="inputPlaceholderEx" class="noob-color-font">name</label>
         </div>
 
         <!--Basic textarea-->
         <div class="md-form pb-3">
-            <input placeholder="&zwnj;" type="text" class="form-control">
+            <input placeholder="&zwnj;" type="email" class="form-control" name="email" value='<?=$data['email']?>'>
             <label for="textareaBasic">email</label>
         </div>
 
         <!-- Material input -->
         <div class="md-form pb-3">
-            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
-            <label for="inputPlaceholderEx">password</label>
+            <input placeholder="&zwnj;" type="password" id="inputPlaceholderEx" name="password" class="form-control">
+            <label for="inputPlaceholderEx">password <span style="color: red">*</span></label>
         </div>
 
         <!-- Material input -->
         <div class="md-form pb-3">
-            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
+            <input placeholder="&zwnj;" type="password" id="inputPlaceholderEx" name="new_password" class="form-control">
             <label for="inputPlaceholderEx">New password</label>
         </div>
 
         <!-- Material input -->
         <div class="md-form pb-3">
-            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
+            <input placeholder="&zwnj;" type="password" id="inputPlaceholderEx" name="confirm_password" class="form-control">
             <label for="inputPlaceholderEx">Confirm password</label>
         </div>
 
-        <div class="text-center mt-5">
-            <input type="submit" name="" class="noob-color-font" value="SUBMIT">
+        <?php if(isset($_GET['error']) AND !empty($_GET['error']))
+        {?>
+          <div class="alert alert-danger" role="alert"><?php
+              echo $_GET['error'];?>
+          </div><?php
+        }?>
+
+        <?php if(isset($_GET['success']) AND !empty($_GET['success']))
+        {?>
+          <div class="alert alert-success" role="alert"><?php
+              echo $_GET['success'];?>
+          </div><?php
+        }?>
+
+        <div class="text-center mt-4">
+            <input type="submit" class="noob-color-font" value="SAVE">
         </div>
+
+
     </form>
 <!-- end inner-mobile-container -->
 </div>

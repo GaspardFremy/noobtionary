@@ -76,6 +76,82 @@ function updateDefinition($id, $edit_title, $edit_content, $edit_synonym)
     return $editedLines;
 }
 
+function getUserInfo($id)
+{
+    $db = dbConnect();
+
+    $req = $db->prepare('SELECT users.*
+    FROM users
+    WHERE users.id = ?');
+
+    $req->execute(array($id));
+
+    $infoUser = $req->fetch();
+
+    return $infoUser;
+}
+
+
+function updateAccountInfo($id, $name, $email, $password, $new_password, $confirm_password)
+{
+    $infoUser = getUserInfo($id);
+
+    $isPasswordCorrect = password_verify($password, $infoUser['password']);
+
+    if($isPasswordCorrect){
+        if($infoUser['name'] !== $name){
+            $db = dbConnect();
+            $req = $db->prepare('UPDATE users SET name = :name WHERE id = :id');
+            $req->execute(array(
+            	'name' => $name,
+            	'id' => $id,
+            ));
+
+            $success = "informations saved!";
+        }
+
+        if($infoUser['email'] !== $email){
+            $success = "";
+
+            $db = dbConnect();
+            $req = $db->prepare('UPDATE users SET email = :email WHERE id = :id');
+            $req->execute(array(
+            	'email' => $email,
+            	'id' => $id,
+            ));
+
+            $success = "informations saved!";
+        }
+
+        if (!empty($new_password) && !empty($confirm_password)){
+
+            if(!empty($new_password) && !empty($confirm_password) && $new_password === $confirm_password){
+
+                $new_password = password_hash($new_password, PASSWORD_DEFAULT);
+                $confirm_password = password_hash($confirm_password, PASSWORD_DEFAULT);
+
+                $db = dbConnect();
+                $req = $db->prepare('UPDATE users SET password = :password WHERE id = :id');
+                $req->execute(array(
+                	'password' => $new_password,
+                	'id' => $id,
+                ));
+
+                $success = "informations saved!";
+
+            }
+            else {
+                $error = "passwords do not match";
+            }
+        }
+    }
+    else{
+        $error = "invalid password";
+    }
+
+    header('location: ./index.php?action=editAccount&success='. $success .'&error='. $error);
+}
+
 function dbConnect()
 {
     $db = new PDO('mysql:host=localhost;dbname=noobtionary;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));

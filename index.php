@@ -40,7 +40,6 @@ try {
             if (isset($_GET['id']) && $_GET['id'] > 0){
                 updateDef($_GET['id'],$_POST['edit_title'], $_POST['edit_content'], $_POST['edit_synonym']);
             }
-
         }
 
         elseif ($_GET['action'] == 'yourDef') {
@@ -56,8 +55,6 @@ try {
             }
         }
 
-        // action=userProfil&id=<?= $data['authorID']
-
         elseif ($_GET['action'] == 'definition' && isset($_GET['id']) ){
             definition($_GET['id']);
         }
@@ -71,7 +68,15 @@ try {
         }
 
         elseif ($_GET['action'] == 'editAccount'){
-            editAccount();
+            if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
+                editAccount($_SESSION['userId']);
+            }
+        }
+
+        elseif ($_GET['action'] == 'updateAccount') {
+            if(isset($_SESSION['userId']) && !empty($_SESSION['userId'])){
+                updateAccount($_SESSION['userId'], $_POST['name'], $_POST['email'], $_POST['password'], $_POST['new_password'], $_POST['confirm_password']);
+            }
         }
 
         elseif ($_GET['action'] == 'searchPage') {
