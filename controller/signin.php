@@ -8,7 +8,7 @@ $confirm_password = password_hash($_POST['confirm_password'], PASSWORD_DEFAULT);
 
 // stérélisation des données
 $email = htmlspecialchars($_POST['email']);
-$pseudo = htmlspecialchars($_POST['pseudo']);
+$name = htmlspecialchars($_POST['name']);
 
 $error = "";
 
@@ -33,14 +33,14 @@ if ($_POST['password'] == $_POST['confirm_password'])
     else
     {
         //Si le mail est libre, l'inserer les données dans la base
-        $req = $db->prepare('INSERT INTO users(email, password, pseudo, date_inscription) VALUES(:email, :password, :pseudo, CURDATE())');
+        $req = $db->prepare('INSERT INTO users(email, password, name, date_inscription) VALUES(:email, :password, :name, CURDATE())');
         $req->execute(array(
             'password' => $password_hache,
             'email' => $email,
-            'pseudo' => $pseudo
+            'name' => $name
         ));
 
-        header("location: ../index.php?action=signed");
+        header("location: ../index.php?action=login");
 
     }
 }
@@ -48,17 +48,16 @@ if ($_POST['password'] == $_POST['confirm_password'])
 else
 {
     $error = "mots de passe différents";
-
 }
 
 if(!empty($error)){
-    header("location: ../index.php?action=profile&error=$error&email=$email&pseudo=$pseudo");
+    header("location: ../index.php?action=signin&error=$error&email=$email&name=$name");
 }
 
 
 function dbConnect()
 {
-    $db = new PDO('mysql:host=localhost;dbname=tuthow;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $db = new PDO('mysql:host=localhost;dbname=noobtionary;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     return $db;
 }
 

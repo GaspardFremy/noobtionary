@@ -78,7 +78,7 @@ input{
     z-index: 100000;
 }
 
-.zmdi-search {
+.zmdi-search, .search-arrow {
     color: #FFF;
 }
 
@@ -149,7 +149,6 @@ input{
     color: #939393 !important;
 }
 
-/*  */
 /* YOUR DEFINITION */
 /*  */
 .modal-footer, .modal-header {

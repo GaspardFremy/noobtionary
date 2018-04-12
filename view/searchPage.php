@@ -11,7 +11,7 @@
 
     <nav class="navbar navbar-dark noob-color headernav d-flex justify-content-between">
 
-        <a href="index.php?action=newOnes"><i class="zmdi zmdi-long-arrow-left zmdi-hc-2x   "></i></a>
+        <a href="index.php?action=newOnes"><i class="zmdi zmdi-long-arrow-left zmdi-hc-2x search-arrow"></i></a>
 
         <a class="navbar-brand title-def " href="#">Search</a>
 

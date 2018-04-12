@@ -8,13 +8,18 @@
 <p>p</p>
 <hr>
 <hr>
+<hr>
 
+
+<div class="inner-mobile-container m-auto">
+    <h5 class="sub-header"><?= $_GET['name'] ?>'s definitions</h5>
+</div>
 <div class="list-group">
-    <?php while ($data = $definitions->fetch()) {?>
+    <?php while ($data = $theirDefinitions->fetch()) {?>
         <div class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 flex-column">
             <h5 class="mb-1 title-def"><?php echo substr($data['title'],0,66); if (iconv_strlen($data['title']) > 30) {echo "...";}?></h5>
-            <small>By <a href="index.php?action=userProfil&id=<?= $data['authorID']?>&name=<?= $data['name']?>"> <span class="noob-color-font"><?= $data['name']; ?></span></a></small>
+            <small>By <a href="#"></a> <span class="noob-color-font"><?= $data['name']; ?></span></small>
             </div>
             <a href="#">
                 <p class="mb-1 mt-2 noob-grey"><?php echo substr($data['content'],0,120); if (iconv_strlen($data['content']) > 120) {echo "...";}?></p>
@@ -33,11 +38,11 @@
     }?>
 </div>
 
-<hr><hr><hr>
+<hr>
+<hr>
+<hr>
 
 <?php $footernav = 'activate'; ?>
-
-<?php $page = 'newOnes'; ?>
 
 <?php $content = ob_get_clean(); ?>
 

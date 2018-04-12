@@ -13,23 +13,23 @@
 <div class="inner-mobile-container m-auto">
     <h5 class="sub-header">Add a definition</h5>
 
-    <form class="pt-4">
+    <form class="pt-4" method="post" action="./index.php?action=postDef">
 
         <!-- Material input -->
         <div class="md-form pb-3">
-            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
+            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control" name="title">
             <label for="inputPlaceholderEx" class="noob-color-font">Title</label>
         </div>
 
         <!--Basic textarea-->
         <div class="md-form pb-3">
-            <textarea placeholder="&zwnj;" type="text" id="textareaBasic" class="form-control md-textarea" rows="3"></textarea>
+            <textarea placeholder="&zwnj;" type="text" id="textareaBasic" class="form-control md-textarea" rows="3" name="content"></textarea>
             <label for="textareaBasic">Content</label>
         </div>
 
         <!-- Material input -->
         <div class="md-form pb-3">
-            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control">
+            <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control" name="synonym">
             <label for="inputPlaceholderEx">Synonym</label>
         </div>
 

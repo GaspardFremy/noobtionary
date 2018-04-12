@@ -15,13 +15,12 @@
     <a href="index.php?action=newOnes"><i class="zmdi zmdi-long-arrow-left mt-2 mb-3"></i></a>
     <div class="flex-column align-items-start">
         <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">RESTful API</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
+        <h5 class="mb-1 title-def"><?= $definition['title'] ?></h5>
+        <small>By <a href="index.php?action=userProfil&id=<?= $definition['authorID']?>&name=<?= $definition['name']?>"> <span class="noob-color-font"><?= $definition['name']?></span></a></small>
         </div>
 
         <p class="mb-1 mt-2 noob-grey">
-            REST technology is generally preferred to the more robust Simple Object Access Protocol (SOAP) technology because REST leverages less bandwidth, making it more suitable for internet usage. <br><br>An API for a website is code that allows two software programs to communicate with each another. The API spells out the proper way for a developer to write a program requesting services from an operating system or other application. <br><br>
-            The REST used by browsers can be thought of as the language of the internet. With cloud use on the rise, APIs are emerging to expose web services. REST is a logical choice for building APIs that allow users to connect and interact with cloud services. RESTful APIs are used by such sites as Amazon, Google, LinkedIn and Twitter.
+            <?= $definition['content'] ?>
         </p>
 
         <div class="d-flex align-items-center">

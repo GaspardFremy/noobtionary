@@ -52,7 +52,7 @@
                                     <a class="nav-link" href="index.php?action=newOnes">Home</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?action=yourDef">Your Definitions</a>
+                                    <a class="nav-link" href="index.php?action=yourDef"> <?php if(isset($_SESSION['name'])){echo $_SESSION['name'];}else{echo "Your Definitions";}?> </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="index.php?action=editAccount">Edit account</a>

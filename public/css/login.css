@@ -48,3 +48,8 @@ input:focus::-webkit-input-placeholder {
 .md-form input[type=date], .md-form input[type=datetime-local], .md-form input[type=email], .md-form input[type=number], .md-form input[type=password], .md-form input[type=search-md], .md-form input[type=search], .md-form input[type=tel], .md-form input[type=text], .md-form input[type=time], .md-form input[type=url], .md-form textarea.md-textarea {
     border-bottom: 1px solid #fff;
 }
+
+
+.md-form input[placeholder], .md-form input[placeholder].active, .md-form textarea[placeholder]  {
+    color: #fff;
+}

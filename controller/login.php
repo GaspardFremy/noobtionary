@@ -1,13 +1,11 @@
 <?php
 
-if (isset($_POST['form-login']))
-{
   $login_email = htmlspecialchars($_POST['login_email']);
   $login_password = htmlspecialchars($_POST['login_password']);
 
   $db = dbConnect();
 
-  $req = $db->prepare('SELECT id, password, pseudo FROM users WHERE email = :email');
+  $req = $db->prepare('SELECT id, password, name FROM users WHERE email = :email');
   $req->execute(array(
     'email' => $login_email,
   ));
@@ -19,37 +17,30 @@ if (isset($_POST['form-login']))
 
   if (!$isPasswordCorrect)
   {
-
     ?>
       <script type="text/javascript">
-      window.location.href = '../index.php?action=signinForm&error=Mauvais identifiant ou mot de passe&login_email= <?php echo $login_email ?>';
+      window.location.href = '../index.php?action=login&error=Mauvais identifiant ou mot de passe&login_email= <?php echo $login_email ?>';
       </script>
     <?php
-
   }
   else
   {
-
       session_start();
       $_SESSION['userId'] = $resultat['id'];
-      $_SESSION['pseudo'] = $resultat['pseudo'];
-
-
-
+      $_SESSION['name'] = $resultat['name'];
       // header('Location : ../index.php?action=connected');
-
       //Gros bugg avec le header location, on effectu la redirection en js.
       ?>
         <script type="text/javascript">
-        window.location.href = '../index.php?action=profile';
+        window.location.href = '../index.php?action=newOnes';
         </script>
       <?php
     }
-  }
+
 
   function dbConnect()
   {
-      $db = new PDO('mysql:host=mysql-tuthow.alwaysdata.net;dbname=tuthow_bdd;charset=utf8', 'tuthow', 'pogona123alwaysdata', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+      $db = new PDO('mysql:host=localhost;dbname=noobtionary;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
       return $db;
   }
 

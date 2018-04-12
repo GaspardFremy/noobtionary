@@ -23,16 +23,43 @@ try {
             addDef();
         }
 
+        elseif ($_GET['action'] == 'postDef') {
+
+                if (!empty($_SESSION['userId']) && !empty($_POST['title']) && !empty($_POST['content']) && !empty($_POST['synonym'])) {
+                    postDef($_SESSION['userId'], $_POST['title'], $_POST['content'], $_POST['synonym']);
+                }
+            }
+
         elseif ($_GET['action'] == 'editDef') {
-            editDef();
+            if (isset($_GET['id']) && $_GET['id'] > 0){
+                getEditDef($_GET['id']);
+            }
+        }
+
+        elseif ($_GET['action'] == 'updateDef') {
+            if (isset($_GET['id']) && $_GET['id'] > 0){
+                updateDef($_GET['id'],$_POST['edit_title'], $_POST['edit_content'], $_POST['edit_synonym']);
+            }
+
         }
 
         elseif ($_GET['action'] == 'yourDef') {
-            yourDef();
+            yourDef($_SESSION['userId']);
         }
 
-        elseif ($_GET['action'] == 'Definition'){
-            definition();
+        elseif ($_GET['action'] == 'userProfil' && isset($_GET['id'],  $_GET['name']) && !empty($_GET['id']) && !empty($_GET['name'])) {
+            if($_GET['id'] === $_SESSION['userId']){
+                yourDef($_SESSION['userId']);
+            }
+            else {
+                userProfil($_GET['id'], $_GET['name']);
+            }
+        }
+
+        // action=userProfil&id=<?= $data['authorID']
+
+        elseif ($_GET['action'] == 'definition' && isset($_GET['id']) ){
+            definition($_GET['id']);
         }
 
         elseif ($_GET['action'] == 'signin'){
@@ -47,21 +74,22 @@ try {
             editAccount();
         }
 
-        elseif ($_GET['action'] == 'definition'){
-            definition();
-        }
-
         elseif ($_GET['action'] == 'searchPage') {
             searchPage();
         }
 
+        elseif ($_GET['action'] == 'logout') {
+            logout();
+        }
+
+
     }
     else {
-        login();
+        newOnes();
     }
 }
 catch(Exception $e) {
     $msgError = $e->getMessage();
 
-    require 'view/frontend/msgError.php';
+    require 'view/msgError.php';
 }
