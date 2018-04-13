@@ -23,7 +23,9 @@ function getTheirDefinitions($authorID)
     FROM definitions
     INNER JOIN users ON definitions.authorID = users.id
 
-    WHERE definitions.authorID = ?');
+    WHERE definitions.authorID = ?
+
+    ORDER BY definitions.creationDate DESC');
 
     $theirDefinitions->execute(array($authorID));
 
@@ -61,7 +63,6 @@ function postDefinition($userId, $title, $content, $synonym)
 function updateDefinition($id, $edit_title, $edit_content, $edit_synonym)
 {
     $db = dbConnect();
-
     $edit = $db->prepare('UPDATE definitions
     SET title = :edit_title, content = :edit_content, synonym = :edit_synonym
     WHERE id = :id');
@@ -72,8 +73,19 @@ function updateDefinition($id, $edit_title, $edit_content, $edit_synonym)
         'edit_synonym' => $edit_synonym,
         'id' => $id,
     ));
-
     return $editedLines;
+}
+
+function deleteDefinition($id)
+{
+    $db = dbConnect();
+    $delete = $db->prepare('DELETE FROM definitions
+    WHERE definitions.id = ?');
+
+    $deletedLine = $delete->execute(array($id));
+    return $deletedLine;
+
+    $success = "definition deleted";
 }
 
 function getUserInfo($id)
@@ -91,7 +103,6 @@ function getUserInfo($id)
     return $infoUser;
 }
 
-
 function updateAccountInfo($id, $name, $email, $password, $new_password, $confirm_password)
 {
     $infoUser = getUserInfo($id);
@@ -106,7 +117,6 @@ function updateAccountInfo($id, $name, $email, $password, $new_password, $confir
             	'name' => $name,
             	'id' => $id,
             ));
-
             $success = "informations saved!";
         }
 
@@ -119,7 +129,6 @@ function updateAccountInfo($id, $name, $email, $password, $new_password, $confir
             	'email' => $email,
             	'id' => $id,
             ));
-
             $success = "informations saved!";
         }
 
@@ -136,9 +145,7 @@ function updateAccountInfo($id, $name, $email, $password, $new_password, $confir
                 	'password' => $new_password,
                 	'id' => $id,
                 ));
-
                 $success = "informations saved!";
-
             }
             else {
                 $error = "passwords do not match";

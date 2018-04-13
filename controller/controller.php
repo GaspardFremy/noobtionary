@@ -31,7 +31,7 @@ function postDef($userId, $title, $content, $synonym)
         throw new Exception('Impossible d\'ajouter la definition !');
     }
     else {
-        header('Location: index.php?action=definition');
+        header('Location: index.php?action=yourDef');
     }
 }
 
@@ -44,9 +44,19 @@ function getEditDef($definitionID)
 function updateDef($id, $edit_title, $edit_content, $edit_synonym)
 {
     $editedLines = updateDefinition($id, $edit_title, $edit_content, $edit_synonym);
-
     if ($editedLines === false) {
         throw new Exception('Impossible d\'éditer la definition!');
+    }
+    else {
+        header('Location: index.php?action=yourDef');
+    }
+}
+
+function deleteDef($id)
+{
+    $deletedLine = deleteDefinition($id);
+    if ($deletedLine === false) {
+        throw new Exception('Impossible de supprimer la definition');
     }
     else {
         header('Location: index.php?action=yourDef');
@@ -85,7 +95,6 @@ function editAccount($id)
 function updateAccount($id, $name, $email, $password, $new_password, $confirm_password)
 {
     $editedLines = updateAccountInfo($id, $name, $email, $password, $new_password, $confirm_password);
-
     if ($editedLines === false) {
         throw new Exception('Impossible d\'éditer le compte');
     }

@@ -42,6 +42,12 @@ try {
             }
         }
 
+        elseif ($_GET['action'] == 'deleteDef') {
+            if (isset($_GET['id']) && $_GET['id'] > 0){
+                deleteDef($_GET['id']);
+            }
+        }
+
         elseif ($_GET['action'] == 'yourDef') {
             yourDef($_SESSION['userId']);
         }

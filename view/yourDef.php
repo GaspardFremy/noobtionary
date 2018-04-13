@@ -24,7 +24,7 @@
 
             <div class="m-auto p-2">
                 <div class="d-flex">
-                    <a href="index.php?action=editDef&id=2"> <p class="noob-color-font px-5">EDIT</p></a>
+                    <a href="index.php?action=editDef&id=2" id="modalEdit"> <p class="noob-color-font px-5">EDIT</p></a>
                     <a href="#" data-toggle="modal" data-target="#deletModal"> <p class="noob-color-font px-5">DELETE</p></a>
                 </div>
 
@@ -50,8 +50,8 @@
                 <p class="sub-header">Deleted definitions are gone forever. <br>Are you sure?</p>
 
                 <div class="d-flex justify-content-around">
-                    <a href="#"> <p class="noob-color-font">CANCEL</p></a>
-                    <a href="#"> <p class="noob-color-font">DELETE</p></a>
+                    <a href="#"> <p class="noob-color-font" data-dismiss="modal">CANCEL</p></a>
+                    <a href="#" id="modalDelete"> <p class="noob-color-font">DELETE</p></a>
                 </div>
 
             </div>
@@ -61,11 +61,9 @@
     </div>
 </div>
 
-
 <div class="inner-mobile-container m-auto">
     <h5 class="sub-header">Your definitions</h5>
 </div>
-
 
 <div class="list-group">
     <?php while ($data = $theirDefinitions->fetch()) {?>
@@ -74,7 +72,7 @@
 
             <div class="d-flex justify-content-between">
                 <h5 class="mb-1 title-def"><?php echo substr($data['title'],0,66); if (iconv_strlen($data['title']) > 30) {echo "...";}?></h5>
-                <i class="zmdi zmdi-more-vert zmdi-hc-2x" data-toggle="modal" data-target="#centralModalSm"></i>
+                <i class="zmdi zmdi-more-vert zmdi-hc-2x option" data-toggle="modal" data-id="<?= $data['id']?>" data-target="#centralModalSm"></i>
             </div>
 
             <small>By <a href="#"></a> <span class="noob-color-font"><?= $data['name']; ?></span></small>
@@ -96,8 +94,6 @@
         </div>
     </div>
     <?php } ?>
-
-
 </div>
 
 <hr>
