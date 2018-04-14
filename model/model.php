@@ -4,11 +4,9 @@
 function getDefinitions()
 {
     $db = dbConnect();
-
     $definitions = $db->query('SELECT definitions.*, users.name
     FROM definitions
     INNER JOIN users ON definitions.authorID = users.id
-
     ORDER BY creationDate');
 
     return $definitions;
@@ -18,17 +16,13 @@ function getDefinitions()
 function getTheirDefinitions($authorID)
 {
     $db = dbConnect();
-
     $theirDefinitions = $db->prepare('SELECT definitions.*, users.name
     FROM definitions
     INNER JOIN users ON definitions.authorID = users.id
-
     WHERE definitions.authorID = ?
-
     ORDER BY definitions.creationDate DESC');
 
     $theirDefinitions->execute(array($authorID));
-
     return $theirDefinitions;
 }
 
@@ -36,17 +30,13 @@ function getTheirDefinitions($authorID)
 function getDefinition($definitionId)
 {
     $db = dbConnect();
-
     $req = $db->prepare('SELECT definitions.*, users.name
     FROM definitions
     INNER JOIN users ON definitions.authorID = users.id
-
     WHERE definitions.id = ?');
 
     $req->execute(array($definitionId));
-
     $definition = $req->fetch();
-
     return $definition;
 }
 
@@ -66,13 +56,13 @@ function updateDefinition($id, $edit_title, $edit_content, $edit_synonym)
     $edit = $db->prepare('UPDATE definitions
     SET title = :edit_title, content = :edit_content, synonym = :edit_synonym
     WHERE id = :id');
-
     $editedLines = $edit->execute(array(
         'edit_title' => $edit_title,
         'edit_content' => $edit_content,
         'edit_synonym' => $edit_synonym,
         'id' => $id,
     ));
+
     return $editedLines;
 }
 
@@ -84,22 +74,92 @@ function deleteDefinition($id)
 
     $deletedLine = $delete->execute(array($id));
     return $deletedLine;
-
-    $success = "definition deleted";
 }
+
+function checkUserVote($userId, $definitionID)
+{
+    $db = dbConnect();
+    $status = $db->prepare('SELECT upvotes_downvotes.*
+    FROM upvotes_downvotes
+    WHERE upvotes_downvotes.userID = ? AND upvotes_downvotes.defID = ? ');
+
+    $status->execute(array($userId, $definitionID));
+    $status_result = $status->fetch();
+    return $status_result;
+}
+
+
+function getTotalUpvotes($definitionID)
+{
+    $db = dbConnect();
+    $upvotes = $db->prepare('SELECT COUNT(*) AS ctnUp FROM upvotes_downvotes WHERE defID = ? AND type = 1');
+    $upvotes->execute(array($definitionID));
+    $total_upvotes = $upvotes->fetch();
+    return $total_upvotes;
+}
+
+function getTotalDownvotes($definitionID)
+{
+    $db = dbConnect();
+    $downvotes = $db->prepare('SELECT COUNT(*) AS ctnDown FROM upvotes_downvotes WHERE defID = ?  AND type = 2');
+    $downvotes->execute(array($definitionID));
+    $total_downvotes = $downvotes->fetch();
+    return $total_downvotes;
+}
+
+function vote($definitionID, $userId, $type)
+{
+    //Check if user as already voted or note
+    $db = dbConnect();
+    $asvoted = $db->prepare('SELECT COUNT(*) AS ctnpost FROM upvotes_downvotes WHERE defID = ? AND userID = ?');
+    $asvoted->execute(array($definitionID, $userId));
+    $result_asvoted = $asvoted->fetch();
+    $vote = $result_asvoted['ctnpost'];
+
+
+    //if not, insert vote
+    if($vote == 0){
+        $db = dbConnect();
+        $insertVote = $db->prepare('INSERT INTO upvotes_downvotes(userID, defID, type) VALUES (?, ?, ?) ');
+        $insertVote->execute(array($userId, $definitionID, $type));
+    }
+
+    // TODO : putain de bugg ici
+    //if yes, update vote
+    else{
+        $db = dbConnect();
+        $insertNewVote = $db->prepare('UPDATE upvotes_downvotes SET type = :type WHERE userID = :userId AND defID = :definitionId');
+        $insertNewVote->execute(array(
+            ':type' => $type,
+            ':userId' => $userId,
+            ':definitionId' => $definitionID,
+        ));
+    }
+
+
+    //return new values
+    $newTotalUpvotes = getTotalUpvotes($definitionID);
+    $newTotalDownvotes = getTotalDownvotes($definitionID);
+
+    // initalizing array
+    $return_arr = array("upvotes"=>$newTotalUpvotes,"downvotes"=>$newTotalDownvotes);
+    echo json_encode($return_arr);
+}
+
+
+
+
+
 
 function getUserInfo($id)
 {
     $db = dbConnect();
-
     $req = $db->prepare('SELECT users.*
     FROM users
     WHERE users.id = ?');
 
     $req->execute(array($id));
-
     $infoUser = $req->fetch();
-
     return $infoUser;
 }
 
@@ -155,7 +215,6 @@ function updateAccountInfo($id, $name, $email, $password, $new_password, $confir
     else{
         $error = "invalid password";
     }
-
     header('location: ./index.php?action=editAccount&success='. $success .'&error='. $error);
 }
 

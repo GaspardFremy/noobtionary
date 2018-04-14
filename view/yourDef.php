@@ -65,6 +65,13 @@
     <h5 class="sub-header">Your definitions</h5>
 </div>
 
+<?php if(isset($_GET['success']) AND !empty($_GET['success']))
+{?>
+  <div class="alert alert-success" id="success" role="alert"><?php
+      echo $_GET['success'];?>
+  </div><?php
+}?>
+
 <div class="list-group">
     <?php while ($data = $theirDefinitions->fetch()) {?>
     <div class="list-group-item list-group-item-action flex-column align-items-start">

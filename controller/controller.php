@@ -48,7 +48,7 @@ function updateDef($id, $edit_title, $edit_content, $edit_synonym)
         throw new Exception('Impossible d\'éditer la definition!');
     }
     else {
-        header('Location: index.php?action=yourDef');
+        header('Location: index.php?action=yourDef&success=definition edited');
     }
 }
 
@@ -59,7 +59,7 @@ function deleteDef($id)
         throw new Exception('Impossible de supprimer la definition');
     }
     else {
-        header('Location: index.php?action=yourDef');
+        header('Location: index.php?action=yourDef&success=definition deleted');
     }
 }
 
@@ -80,10 +80,18 @@ function top()
     require('view/top.php');
 }
 
-function definition($definitionID)
+function definition($userId, $definitionID)
 {
+    $total_downvotes = getTotalDownvotes($definitionID);
+    $total_upvotes = getTotalUpvotes($definitionID);
+    $status_result = checkUserVote($userId, $definitionID);
     $definition = getDefinition($definitionID);
     require('view/definition.php');
+}
+
+function uservote($definitionID, $userId, $type)
+{
+    vote($definitionID, $userId, $type);
 }
 
 function editAccount($id)

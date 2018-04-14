@@ -62,7 +62,11 @@ try {
         }
 
         elseif ($_GET['action'] == 'definition' && isset($_GET['id']) ){
-            definition($_GET['id']);
+            definition($_SESSION['userId'], $_GET['id']);
+        }
+
+        elseif ($_GET['action'] == 'vote' && isset($_POST['definitionID'], $_POST['type'] )){
+            uservote($_POST['definitionID'], $_SESSION['userId'], $_POST['type']);
         }
 
         elseif ($_GET['action'] == 'signin'){

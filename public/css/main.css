@@ -67,6 +67,8 @@ input{
     color: #9E9E9E;
 }
 
+
+
 /*  */
 /* HEADERNAV */
 /*  */
@@ -81,7 +83,6 @@ input{
 .zmdi-search, .search-arrow {
     color: #FFF;
 }
-
 
 /*  */
 /* FOOTER NAV */
@@ -118,8 +119,28 @@ input{
     font-weight: 400;
 }
 
-.rank {
+.upvote {
+    transition: 0.1s;
     font-size: 16px;
+    color: #9ED7BC;
+}
+
+.vote1 {
+    transition: 0.1s;
+    font-size: 20px;
+    color: #63BF94;
+}
+
+.downvote {
+    transition: 0.1s;
+    font-size: 16px;
+    color: #E59089;
+}
+
+.vote2 {
+    transition: 0.1s;
+    font-size: 20px;
+    color: #D42A2A;
 }
 
 /*  */
