@@ -23,25 +23,19 @@
             <?= $definition['content'] ?>
         </p>
 
-        <!-- <div class="post-action">
-
-        <input type="button" value="upvote" id="upvote_<?= $definition['id']?>" class="upvote" />&nbsp;(<span id="upvotes_<?= $definition['id']?>"><?php print_r($total_upvotes['ctnUp']);?></span>)&nbsp;
-        <input type="button" value="downvote" id="downvote_<?= $definition['id']?>" class="downvote" >&nbsp;(<span id="downvotes_<?= $definition['id']?>"><?php print_r($total_downvotes['ctnDown']);?></span>)
-
-       </div> -->
-
         <div class="d-flex align-items-center">
             <div class="upvote" id="upvote_<?= $definition['id']?>">
-                <small class=" upvote vote<?php if(isset($status_result) AND $status_result['type'] == 1){echo "1"; }?> "><span id="upvotes_<?= $definition['id']?>" ><?php print_r($total_upvotes['ctnUp']);?></span> </small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 upvote vote<?php if(isset($status_result) AND $status_result['type'] == 1){echo "1"; }?>"></i></span>
+                <small class="upvote_<?= $definition['id']?> upvote vote<?php if(isset($status_result) AND $status_result['type'] == 1){echo "1"; }?> "><span id="upvotes_<?= $definition['id']?>" ><?php print_r($total_upvotes['ctnUp']);?></span> </small>
+                <span><i class="upvote_<?= $definition['id']?> zmdi zmdi-caret-up zmdi-hc-2x ml-1 upvote vote<?php if(isset($status_result) AND $status_result['type'] == 1){echo "1"; }?>"></i></span>
             </div>
 
             <div class="downvote" id="downvote_<?= $definition['id']?>">
-                <small class="ml-3 downvote vote<?php if(isset($status_result) AND $status_result['type'] == 2){echo "2"; }?>"><span id="downvotes_<?= $definition['id']?>" ><?php  print_r($total_downvotes['ctnDown']);?></span></small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 downvote vote<?php if(isset($status_result) AND $status_result['type'] == 2){echo "2"; }?>"></i></span>
+                <small class="downvote_<?= $definition['id']?> ml-3 downvote vote<?php if(isset($status_result) AND $status_result['type'] == 2){echo "2"; }?>"><span id="downvotes_<?= $definition['id']?>" ><?php  print_r($total_downvotes['ctnDown']);?></span></small>
+                <span><i class="downvote_<?= $definition['id']?> zmdi zmdi-caret-down zmdi-hc-2x ml-1 downvote vote<?php if(isset($status_result) AND $status_result['type'] == 2){echo "2"; }?>"></i></span>
             </div>
-
         </div>
+
+        <span id="type"></span>
 
 
 

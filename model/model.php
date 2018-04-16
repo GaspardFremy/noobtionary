@@ -7,9 +7,22 @@ function getDefinitions()
     $definitions = $db->query('SELECT definitions.*, users.name
     FROM definitions
     INNER JOIN users ON definitions.authorID = users.id
-    ORDER BY creationDate');
+    ORDER BY creationDate DESC');
 
     return $definitions;
+}
+
+
+//For top ranked def page
+function getDefinitionsTop()
+{
+    $db = dbConnect();
+    $definitionsTop = $db->query('SELECT definitions.*, users.name
+    FROM definitions
+    INNER JOIN users ON definitions.authorID = users.id
+    ORDER BY definitions.ranking DESC');
+
+    return $definitionsTop;
 }
 
 //For users profil
@@ -43,9 +56,10 @@ function getDefinition($definitionId)
 
 function postDefinition($userId, $title, $content, $synonym)
 {
+    $basic = 0;
     $db = dbConnect();
-    $definition = $db->prepare('INSERT INTO definitions(authorID, title, content, synonym, creationDate) VALUES(?, ?, ?, ?, NOW())');
-    $affectedLines = $definition->execute(array($userId, $title, $content, $synonym));
+    $definition = $db->prepare('INSERT INTO definitions(authorID, title, content, synonym, ranking, creationDate ) VALUES(?, ?, ?, ?, ?, NOW())');
+    $affectedLines = $definition->execute(array($userId, $title, $content, $synonym,1));
 
     return $affectedLines;
 }
@@ -124,7 +138,6 @@ function vote($definitionID, $userId, $type)
         $insertVote->execute(array($userId, $definitionID, $type));
     }
 
-    // TODO : putain de bugg ici
     //if yes, update vote
     else{
         $db = dbConnect();
@@ -132,23 +145,37 @@ function vote($definitionID, $userId, $type)
         $insertNewVote->execute(array(
             ':type' => $type,
             ':userId' => $userId,
-            ':definitionId' => $definitionID,
+            ':definitionId' => $definitionID
         ));
     }
-
 
     //return new values
     $newTotalUpvotes = getTotalUpvotes($definitionID);
     $newTotalDownvotes = getTotalDownvotes($definitionID);
 
+    // Update ranking
+    $ranking = $newTotalUpvotes['ctnUp'] - $newTotalDownvotes['ctnDown'];
+
+    $db = dbConnect();
+    $insertrank = $db->prepare('UPDATE definitions SET ranking = :ranking WHERE id = :definitionId');
+    $insertrank->execute(array(
+        ':ranking' => $ranking,
+        ':definitionId' => $definitionID,
+    ));
+
+    //Update Total Upvotes and Downvotes
+    $db = dbConnect();
+    $insertUpvotes = $db->prepare('UPDATE definitions SET totalUpvotes = :totalUpvotes, totalDownvotes = :totalDownvotes WHERE id = :definitionId');
+    $insertUpvotes->execute(array(
+        ':totalUpvotes' => $newTotalUpvotes['ctnUp'],
+        ':totalDownvotes' => $newTotalDownvotes['ctnDown'],
+        ':definitionId' => $definitionID,
+    ));
+
     // initalizing array
-    $return_arr = array("upvotes"=>$newTotalUpvotes,"downvotes"=>$newTotalDownvotes);
+    $return_arr = array("upvotes"=>$newTotalUpvotes,"downvotes"=>$newTotalDownvotes, "type"=>$type);
     echo json_encode($return_arr);
 }
-
-
-
-
 
 
 function getUserInfo($id)

@@ -10,19 +10,19 @@ $('.option').click(function(){
       $('#modalEdit').attr('href','./index.php?action=editDef&id='+id);
   })
 
-$('.upvote').click(function(){
-     $(".upvote").addClass("vote1");
-     $(".upvote").removeClass("upvote");
-     $(".vote2").addClass("downvote");
-     $(".vote2").removeClass("vote2")
-});
-
-$('.downvote').click(function(){
-     $(".downvote").addClass("vote2");
-      $(".downvote").removeClass("downvote");
-      $(".vote1").addClass("upvote");
-      $(".vote1").removeClass("vote1");
-});
+// $('.upvote').click(function(){
+//      $(".upvote").addClass("vote1");
+//      $(".upvote").removeClass("upvote");
+//      $(".vote2").addClass("downvote");
+//      $(".vote2").removeClass("vote2")
+// });
+//
+// $('.downvote').click(function(){
+//      $(".downvote").addClass("vote2");
+//       $(".downvote").removeClass("downvote");
+//       $(".vote1").addClass("upvote");
+//       $(".vote1").removeClass("vote1");
+// });
 
 // AJAX call for vote
 $(document).ready(function(){
@@ -53,23 +53,23 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data){
 
+                console.log('success');
                 var upvotes = data['upvotes']['ctnUp'];
                 var downvotes = data['downvotes']['ctnDown'];
+                var type = data['type'];
 
                 $("#upvotes_"+definitionID).text(upvotes);        // setting likes
                 $("#downvotes_"+definitionID).text(downvotes);    // setting unlikes
 
-                if(type == 1){
+                if(type === "1"){
                     $(".upvote_"+definitionID).removeClass("upvote");
                     $(".upvote_"+definitionID).addClass("vote1");
 
                     $(".downvote_"+definitionID).removeClass("vote2");
                     $(".downvote_"+definitionID).addClass("downvote");
-
-
                 }
 
-                if(type == 2){
+                if(type === "2"){
                     $(".upvote_"+definitionID).removeClass("vote1");
                     $(".upvote_"+definitionID).addClass("upvote");
 

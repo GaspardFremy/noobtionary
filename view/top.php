@@ -8,159 +8,36 @@
 <p>o</p>
 <hr>
 <hr>
-
 <div class="list-group">
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">RESTful API</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
-        </div>
-        <a href="#">
-            <p class="mb-1 mt-2 noob-grey">A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data …</p>
-        </a>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <small class="noob-light-green rank">1k</small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 noob-light-green"></i></span>
-                <small class="ml-3 noob-light-red rank">1k</small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 noob-light-red"></i></span>
+    <?php while ($data = $definitionsTop->fetch()) {?>
+        <?php $total_upvotes['ctnUp'] = 1; ?>
+        <?php $total_downvotes['ctnDown'] = 1; ?>
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 flex-column">
+            <h5 class="mb-1 title-def"><?php echo substr($data['title'],0,66); if (iconv_strlen($data['title']) > 30) {echo "...";}?></h5>
+            <small>By <a href="index.php?action=userProfil&id=<?= $data['authorID']?>&name=<?= $data['name']?>"> <span class="noob-color-font"><?= $data['name']; ?></span></a></small>
             </div>
-            <a href="#"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
-        </div>
-    </div>
+            <a href="#">
+                <p class="mb-1 mt-2 noob-grey"><?php echo substr($data['content'],0,120); if (iconv_strlen($data['content']) > 120) {echo "...";}?></p>
+            </a>
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <div class="upvote" id="upvote_<?= $data['id']?>">
+                        <small class="upvote_<?= $data['id']?> upvote vote<?php if(isset($status_result) AND $status_result['type'] == 1){echo "1"; }?> "><span id="upvotes_<?= $data['id']?>" ><?php print_r($data['totalUpvotes']);?></span> </small>
+                        <span><i class="upvote_<?= $data['id']?> zmdi zmdi-caret-up zmdi-hc-2x ml-1 upvote vote<?php if(isset($status_result) AND $status_result['type'] == 1){echo "1"; }?>"></i></span>
+                    </div>
 
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">Content Delivery Network</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
-        </div>
-        <a href="#">
-            <p class="mb-1 mt-2 noob-grey">A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data …</p>
-        </a>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <small class="noob-light-green rank">1k</small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 noob-light-green"></i></span>
-                <small class="ml-3 noob-light-red rank">1k</small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 noob-light-red"></i></span>
-            </div>
-            <a href="#"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
-        </div>
-    </div>
+                    <div class="downvote" id="downvote_<?= $data['id']?>">
+                        <small class="downvote_<?= $data['id']?> ml-3 downvote vote<?php if(isset($status_result) AND $status_result['type'] == 2){echo "2"; }?>"><span id="downvotes_<?= $data['id']?>" ><?php  print_r($data['totalDownvotes']);?></span></small>
+                        <span><i class="downvote_<?= $data['id']?> zmdi zmdi-caret-down zmdi-hc-2x ml-1 downvote vote<?php if(isset($status_result) AND $status_result['type'] == 2){echo "2"; }?>"></i></span>
+                    </div>
+                </div>
 
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">Polyfill</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
-        </div>
-        <a href="#">
-            <p class="mb-1 mt-2 noob-grey">A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data …</p>
-        </a>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <small class="noob-light-green rank">1k</small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 noob-light-green"></i></span>
-                <small class="ml-3 noob-light-red rank">1k</small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 noob-light-red"></i></span>
+                <a href="index.php?action=definition&id=<?= $data['id']; ?>"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
             </div>
-            <a href="#"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
         </div>
-    </div>
-
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">Design Pattern</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
-        </div>
-        <a href="#">
-            <p class="mb-1 mt-2 noob-grey">A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data …</p>
-        </a>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <small class="noob-light-green rank">1k</small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 noob-light-green"></i></span>
-                <small class="ml-3 noob-light-red rank">1k</small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 noob-light-red"></i></span>
-            </div>
-            <a href="#"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
-        </div>
-    </div>
-
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">RESTful API</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
-        </div>
-        <a href="#">
-            <p class="mb-1 mt-2 noob-grey">A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data …</p>
-        </a>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <small class="noob-light-green rank">1k</small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 noob-light-green"></i></span>
-                <small class="ml-3 noob-light-red rank">1k</small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 noob-light-red"></i></span>
-            </div>
-            <a href="#"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
-        </div>
-    </div>
-
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">RESTful API</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
-        </div>
-        <a href="#">
-            <p class="mb-1 mt-2 noob-grey">A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data …</p>
-        </a>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <small class="noob-light-green rank">1k</small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 noob-light-green"></i></span>
-                <small class="ml-3 noob-light-red rank">1k</small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 noob-light-red"></i></span>
-            </div>
-            <a href="#"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
-        </div>
-    </div>
-
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">RESTful API</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
-        </div>
-        <a href="#">
-            <p class="mb-1 mt-2 noob-grey">A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data …</p>
-        </a>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <small class="noob-light-green rank">1k</small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 noob-light-green"></i></span>
-                <small class="ml-3 noob-light-red rank">1k</small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 noob-light-red"></i></span>
-            </div>
-            <a href="#"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
-        </div>
-    </div>
-
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
-        <div class="d-flex w-100 flex-column">
-        <h5 class="mb-1 title-def">RESTful API</h5>
-        <small>By <a href="#"></a> <span class="noob-color-font">Jonh Doe</span></small>
-        </div>
-        <a href="#">
-            <p class="mb-1 mt-2 noob-grey">A RESTful API is an application program interface (API) that uses HTTP requests to GET, PUT, POST and DELETE data …</p>
-        </a>
-        <div class="d-flex justify-content-between">
-            <div class="d-flex align-items-center">
-                <small class="noob-light-green rank">1k</small>
-                <span><i class="zmdi zmdi-caret-up zmdi-hc-2x ml-1 noob-light-green"></i></span>
-                <small class="ml-3 noob-light-red rank">1k</small>
-                <span><i class="zmdi zmdi-caret-down zmdi-hc-2x ml-1 noob-light-red"></i></span>
-            </div>
-            <a href="#"> <i class="zmdi zmdi-arrow-right zmdi-hc-2x"></i></a>
-        </div>
-    </div>
+        <?php
+    }?>
 </div>
 
 <?php $footernav = 'activate'; ?>

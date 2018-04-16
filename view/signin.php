@@ -18,7 +18,7 @@
 
         <!-- Material input email -->
         <div class="md-form mt-5">
-            <input placeholder="&zwnj;" type="email" id="materialFormRegisterEmailEx" class="form-control" name="email" value="<?php if(isset($_GET['email'])){echo $_GET['email'];}?>">
+            <input placeholder="&zwnj;" type="text" id="materialFormRegisterEmailEx" class="form-control" name="email" value="<?php if(isset($_GET['email'])){echo $_GET['email'];}?>">
             <label for="materialFormRegisterEmailEx">Your email</label>
         </div>
 

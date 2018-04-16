@@ -12,7 +12,7 @@
         <form class="pt-5" method="post" action='./controller/login.php'>
             <!-- Material input email -->
             <div class="md-form mt-5">
-                <input placeholder="&zwnj;" type="email" id="materialFormRegisterEmailEx" class="form-control" name="login_email">
+                <input placeholder="&zwnj;" type="text" id="materialFormRegisterEmailEx" class="form-control" name="login_email">
                 <label for="materialFormRegisterEmailEx">Your email</label>
             </div>
 

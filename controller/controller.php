@@ -18,6 +18,12 @@ function newOnes()
     require('view/newones.php');
 }
 
+function top()
+{
+    $definitionsTop = getDefinitionsTop();
+    require('view/top.php');
+}
+
 function addDef()
 {
     require('view/addDef.php');
@@ -73,11 +79,6 @@ function userProfil($authorID, $name)
 {
     $theirDefinitions = getTheirDefinitions($authorID);
     require('view/theirDef.php');
-}
-
-function top()
-{
-    require('view/top.php');
 }
 
 function definition($userId, $definitionID)
