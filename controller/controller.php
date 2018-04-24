@@ -24,6 +24,12 @@ function top()
     require('view/top.php');
 }
 
+function searchedDefinitions($title)
+{
+    $definitions = getRequestedDefinitions($title);
+    require('view/resultsSearch.php');
+}
+
 function addDef()
 {
     require('view/addDef.php');

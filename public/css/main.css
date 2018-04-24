@@ -175,3 +175,12 @@ input{
 .modal-footer, .modal-header {
     border: 1px solid transparent !important;
 }
+
+.modal-dialog {
+    max-width: 360px;
+    margin: 1.75rem auto;
+}
+
+:focus {
+    outline: none;
+}

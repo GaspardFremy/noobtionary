@@ -93,6 +93,17 @@ try {
             searchPage();
         }
 
+        elseif ($_GET['action'] == 'search') {
+            if (isset($_GET['title'])){
+                searchedDefinitions($_GET['title']);
+            }
+
+            else {
+                login();
+            }
+        }
+
+
         elseif ($_GET['action'] == 'logout') {
             logout();
         }

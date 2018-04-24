@@ -10,21 +10,7 @@ $('.option').click(function(){
       $('#modalEdit').attr('href','./index.php?action=editDef&id='+id);
   })
 
-// $('.upvote').click(function(){
-//      $(".upvote").addClass("vote1");
-//      $(".upvote").removeClass("upvote");
-//      $(".vote2").addClass("downvote");
-//      $(".vote2").removeClass("vote2")
-// });
-//
-// $('.downvote').click(function(){
-//      $(".downvote").addClass("vote2");
-//       $(".downvote").removeClass("downvote");
-//       $(".vote1").addClass("upvote");
-//       $(".vote1").removeClass("vote1");
-// });
-
-// AJAX call for vote
+// AJAX voting system
 $(document).ready(function(){
 
 
@@ -45,7 +31,6 @@ $(document).ready(function(){
             type = 2;
         }
 
-        // AJAX Request
         $.ajax({
             url: './index.php?action=vote',
             type: 'post',
@@ -75,12 +60,42 @@ $(document).ready(function(){
 
                     $(".downvote_"+definitionID).removeClass("downvote");
                     $(".downvote_"+definitionID).addClass("vote2");
-
                 }
             }
-
         });
-
     });
+});
 
+// AJAX SEARCH
+$(document).ready(function(){
+
+    $("#txt_search").keyup(function(){
+        var search = $(this).val();
+
+        if(search != ""){
+            $.ajax({
+                url: './controller/fetchData.php',
+                type: 'post',
+                data: {search:search, type:1},
+                dataType: 'json',
+                success:function(response){
+                    console.log('success');
+
+                    var len = response.length;
+                    $("#searchResult").empty();
+                    if (!len) {
+                        $("#searchResult").append("<div class='list-group-item list-group-item-action flex-column align-items-start'><p>no results</p></div>");
+                    }
+                    for( var i = 0; i<len; i++){
+
+                        var id = response[i]['id'];
+                        var title = response[i]['title'];
+                        var rowctn = response[i]['rowctn'];
+
+                        $("#searchResult").append("<a href='index.php?action=search&title="+title+"'<div class='list-group-item list-group-item-action flex-column align-items-start' value='"+id+"'><h5 class='mb-1 title-def'>"+title+"</h5><br><p>"+rowctn+" results</p></div></a>");
+                    }
+                }
+            });
+        }
+    });
 });

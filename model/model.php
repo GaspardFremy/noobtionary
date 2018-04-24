@@ -25,6 +25,22 @@ function getDefinitionsTop()
     return $definitionsTop;
 }
 
+//When user search for a term, and click on suggested results
+function getRequestedDefinitions($title)
+{
+    // $title = str_replace('20%', ' ', $title);
+    $db = dbConnect();
+    $definitions = $db->prepare('SELECT definitions.*, users.name
+    FROM definitions
+    INNER JOIN users ON definitions.authorID = users.id
+    WHERE title = ?
+    ORDER BY definitions.ranking DESC');
+
+    $definitions->execute(array($title));
+
+    return $definitions;
+}
+
 //For users profil
 function getTheirDefinitions($authorID)
 {

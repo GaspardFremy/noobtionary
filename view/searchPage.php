@@ -1,4 +1,5 @@
-<?php $title = 'search'; ?>
+<?php
+$title = 'search';?>
 
 <?php ob_start(); ?>
 
@@ -20,21 +21,20 @@
        </form>
     </nav>
 
-
-
 <p>p</p>
 <hr>
 <hr>
 <hr>
 
-<div class="inner-mobile-container m-auto">
 
-<!-- Search form -->
-<div class="md-form">
-    <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+<div class=" md-form text-center m-auto ">
+    <input type="text" class="form-control w-75 m-auto" type="text" placeholder="Search" aria-label="Search"  id="txt_search" name="txt_search">
 </div>
 
-<!-- end inner-mobile-container -->
+<div class="list-group" id="searchResult">
+        <div class="list-group-item list-group-item-action flex-column align-items-start">
+
+        </div>
 </div>
 
 
