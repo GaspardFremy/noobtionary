@@ -18,19 +18,19 @@
         <!-- Material input -->
         <div class="md-form pb-3">
             <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control" name="title">
-            <label for="inputPlaceholderEx" class="noob-color-font">Title</label>
+            <label for="inputPlaceholderEx" class="noob-color-font">Title<span style="color: red">*</span></label>
         </div>
 
         <!--Basic textarea-->
         <div class="md-form pb-3">
             <textarea placeholder="&zwnj;" type="text" id="textareaBasic" class="form-control md-textarea" rows="3" name="content"></textarea>
-            <label for="textareaBasic">Content</label>
+            <label for="textareaBasic">Content<span style="color: red">*</span></label>
         </div>
 
         <!-- Material input -->
         <div class="md-form pb-3">
             <input placeholder="&zwnj;" type="text" id="inputPlaceholderEx" class="form-control" name="synonym">
-            <label for="inputPlaceholderEx">Synonym</label>
+            <label for="inputPlaceholderEx">stand for</label>
         </div>
 
         <div class="text-center mt-5">

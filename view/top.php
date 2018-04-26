@@ -40,6 +40,9 @@
     }?>
 </div>
 
+<hr><hr><hr>
+
+
 <?php $footernav = 'activate'; ?>
 
 <?php $page = 'top'; ?>

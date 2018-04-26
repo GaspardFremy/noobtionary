@@ -37,30 +37,3 @@ if (!$con) {
 
        echo json_encode($search_arr);
    }
-
-   // get User data
-   if($type == 2){
-       $title = $_POST['value'];
-
-       $definitions = $db->query('SELECT definitions.*, users.name
-       FROM definitions
-       INNER JOIN users ON definitions.authorID = users.id
-       ORDER BY creationDate DESC');
-
-       $sql = "SELECT definitions.*, users.name
-       FROM defintions
-       INNER JOIN users ON definitions.authorID = users.id
-       where title=".$title;
-
-       $result = mysqli_query($con,$sql);
-
-       $return_arr = array();
-       while($fetch = mysqli_fetch_assoc($result)){
-           $username = $fetch['title'];
-           $email = $fetch['content'];
-
-           $return_arr[] = array("username"=>$username, "email"=> $email);
-       }
-
-       echo json_encode($return_arr);
-   }

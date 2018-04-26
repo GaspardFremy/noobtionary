@@ -92,7 +92,7 @@ $(document).ready(function(){
                         var title = response[i]['title'];
                         var rowctn = response[i]['rowctn'];
 
-                        $("#searchResult").append("<a href='index.php?action=search&title="+title+"'<div class='list-group-item list-group-item-action flex-column align-items-start' value='"+id+"'><h5 class='mb-1 title-def'>"+title+"</h5><br><p>"+rowctn+" results</p></div></a>");
+                        $("#searchResult").append("<a href='index.php?action=search&title="+title+"'<div class='list-group-item list-group-item-action' value='"+id+"'><h5 class='title-def'>"+title+"</h5><br><p>"+rowctn+" results</p></div></a>");
                     }
                 }
             });

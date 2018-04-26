@@ -89,6 +89,7 @@ function userProfil($authorID, $name)
 
 function definition($userId, $definitionID)
 {
+    $comments = getComments($definitionID);
     $total_downvotes = getTotalDownvotes($definitionID);
     $total_upvotes = getTotalUpvotes($definitionID);
     $status_result = checkUserVote($userId, $definitionID);

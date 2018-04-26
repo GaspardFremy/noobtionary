@@ -17,7 +17,7 @@ input{
 
 .mobile-container {
     width: 375px;
-    min-height: 1000px;
+    min-height: 730px;
     background-color: #FFF;
 }
 
@@ -65,6 +65,15 @@ input{
 
 .noob-grey {
     color: #9E9E9E;
+}
+
+hr {
+    border : 1px solid transparent;
+    border-top: 1px solid rgba(0, 0, 0, 0)
+}
+
+.no-border {
+    border: none;
 }
 
 

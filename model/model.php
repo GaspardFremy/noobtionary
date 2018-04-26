@@ -69,6 +69,19 @@ function getDefinition($definitionId)
     return $definition;
 }
 
+function getComments($definitionID)
+{
+    $db = dbConnect();
+    $comments = $db->prepare('SELECT comments.*, users.name AS username
+    FROM comments
+    INNER JOIN users ON comments.authorID = users.id
+    WHERE comments.definitionID = ?');
+
+    $comments->execute(array($definitionID));
+
+    return $comments;
+}
+
 
 function postDefinition($userId, $title, $content, $synonym)
 {

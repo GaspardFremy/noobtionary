@@ -14,7 +14,7 @@ $title = 'search';?>
 
         <a href="index.php?action=newOnes"><i class="zmdi zmdi-long-arrow-left zmdi-hc-2x search-arrow"></i></a>
 
-        <a class="navbar-brand title-def " href="#">Search</a>
+        <a class="navbar-brand title-def" href="#">Search</a>
 
         <form class="form-inline waves-effect waves-light">
             <a href="./index.php?action=searchPage"><i class="zmdi zmdi-search zmdi-hc-2x"></i></a>
@@ -27,12 +27,12 @@ $title = 'search';?>
 <hr>
 
 
-<div class=" md-form text-center m-auto ">
+<div class="md-form text-center m-auto">
     <input type="text" class="form-control w-75 m-auto" type="text" placeholder="Search" aria-label="Search"  id="txt_search" name="txt_search">
 </div>
 
 <div class="list-group" id="searchResult">
-        <div class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="list-group-item list-group-item-action flex-column align-items-start no-border">
 
         </div>
 </div>
