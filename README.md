@@ -1,4 +1,4 @@
-# noobtionary
+# :blue_book: noobtionary
 
 **Purpose**
 
@@ -17,8 +17,7 @@ For UX friendly purpose, Noobtionary is based on a ranking system. It's possible
 
 **Resources**
 
+[Material Design for bootstrap](https://mdbootstrap.com/)
 
-https://mdbootstrap.com/
-
-http://zavoloklom.github.io/material-design-iconic-font/icons.html
+[Material Icon Set](http://zavoloklom.github.io/material-design-iconic-font/icons.html)
 
