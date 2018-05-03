@@ -9,7 +9,7 @@ For UX friendly purpose, Noobtionary is based on a ranking system. It's possible
 
 **How to launch it**
 
-- create a db using the noobtionary>mysql>noobtionary.sql file
+- Duplicate localy the db using the mysql>noobtionary.sql dump file
 - if Windows user, edit dbConnect() function in model.php ('root' -> ''), same with controller>fetchData.php
 - You have to be logged to try it. You can use this log -> email : 1, password : 1 (email are not secured yet)
 
