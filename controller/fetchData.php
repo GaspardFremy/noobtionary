@@ -1,8 +1,8 @@
 <?php
-$host = "localhost"; /* Host name */
-$user = "root"; /* User */
+$host = "mysql-noobtionary.alwaysdata.net"; /* Host name */
+$user = "158775"; /* User */
 $password = "root"; /* Password */
-$dbname = "noobtionary"; /* Database name */
+$dbname = "noobtionary_test"; /* Database name */
 
 $con = mysqli_connect($host, $user, $password,$dbname);
 // Check connection

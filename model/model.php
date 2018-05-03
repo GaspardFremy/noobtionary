@@ -274,6 +274,6 @@ function updateAccountInfo($id, $name, $email, $password, $new_password, $confir
 
 function dbConnect()
 {
-    $db = new PDO('mysql:host=localhost;dbname=noobtionary;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    $db = new PDO('mysql:host=mysql-noobtionary.alwaysdata.net;dbname=noobtionary_test;charset=utf8', '158775', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
     return $db;
 }
