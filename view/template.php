@@ -58,9 +58,6 @@
                                     <a class="nav-link" href="index.php?action=editAccount">Edit account</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.php?action=settings">Settings</a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="index.php?action=logout">logout</a>
                                 </li>
                             </ul>
@@ -73,10 +70,7 @@
 
         <?php } ?>
 
-
-
             <?= $content ?>
-
 
         <?php if (isset($footernav) AND $footernav === 'activate') { ?>
             <nav class="navbar footernav d-flex justify-content-between">
@@ -101,15 +95,11 @@
                         <span class="text-center">top</span>
                     </div>
                 </a>
-
-
             </nav>
         <?php } ?>
 
     </div>
     <!-- end mobile-container -->
-
-
 
 
     <!-- JQuery -->
@@ -126,11 +116,9 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
 
-   <script src="./public/js/script.js"></script>
+    <script src="./public/js/script.js"></script>
 
-
-
-   <?php if(isset($js)){echo $js;}?>
+    <?php if(isset($js)){echo $js;}?>
 
 </body>
 </html>

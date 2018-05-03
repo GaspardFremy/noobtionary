@@ -28,7 +28,6 @@ function getDefinitionsTop()
 //When user search for a term, and click on suggested results
 function getRequestedDefinitions($title)
 {
-    // $title = str_replace('20%', ' ', $title);
     $db = dbConnect();
     $definitions = $db->prepare('SELECT definitions.*, users.name
     FROM definitions
@@ -152,13 +151,12 @@ function getTotalDownvotes($definitionID)
 
 function vote($definitionID, $userId, $type)
 {
-    //Check if user as already voted or note
+    //Check if user has already voted or note
     $db = dbConnect();
     $asvoted = $db->prepare('SELECT COUNT(*) AS ctnpost FROM upvotes_downvotes WHERE defID = ? AND userID = ?');
     $asvoted->execute(array($definitionID, $userId));
     $result_asvoted = $asvoted->fetch();
     $vote = $result_asvoted['ctnpost'];
-
 
     //if not, insert vote
     if($vote == 0){

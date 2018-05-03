@@ -76,7 +76,7 @@ $(document).ready(function(){
             $.ajax({
                 url: './controller/fetchData.php',
                 type: 'post',
-                data: {search:search, type:1},
+                data: {search:search},
                 dataType: 'json',
                 success:function(response){
                     console.log('success');

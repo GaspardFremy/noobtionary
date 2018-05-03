@@ -38,9 +38,6 @@ $title = 'search';?>
 </div>
 
 
-
-
-
 <?php $footernav = 'activate'; ?>
 
 <?php $page = 'addDef'; ?>
