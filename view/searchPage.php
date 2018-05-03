@@ -5,7 +5,6 @@ $title = 'search';?>
 
 <?php $headernav = 'inactive'; ?>
 
-<img src="./public/img/status-bar.png" class="status-bar" alt="">
 
 <?php if(!isset($headernav)){echo '<div class="p-4"></div>';}?>
 
@@ -36,6 +35,9 @@ $title = 'search';?>
 
         </div>
 </div>
+
+
+
 
 
 <?php $footernav = 'activate'; ?>

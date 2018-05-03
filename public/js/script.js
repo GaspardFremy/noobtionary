@@ -1,7 +1,13 @@
+// fix header/footer outer flow issue
+
+var header_height = document.querySelector(".headernav").offsetHeight;
+var footer_height = document.querySelector(".footernav").offsetHeight;
+
+var container_paddingTop = document.querySelector(".spacer-container").style.paddingTop=header_height+ 'px'
+var container_paddingBottom = document.querySelector(".spacer-container").style.paddingBottom=footer_height+"px";
 
 // animation on alert
 $('#success').delay(2000).hide('blind');
-
 
 //Transit def id to modal href
 $('.option').click(function(){
@@ -13,12 +19,10 @@ $('.option').click(function(){
 // AJAX voting system
 $(document).ready(function(){
 
-
     // like and unlike click
     $(".upvote, .downvote").click(function(){
         var id = this.id;   // Getting Button id
         var split_id = id.split("_");
-
 
         var text = split_id[0];
         var definitionID = split_id[1];  // postid

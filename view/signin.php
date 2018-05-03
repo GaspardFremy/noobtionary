@@ -5,7 +5,7 @@
 <?php ob_start(); ?>
 
 
-    <h2 class="white-text text-center pt-5">Noobtionary</h2>
+<h2 class="white-text text-center pt-5">Noobtionary</h2>
 
 
 <div class="inner-mobile-container m-auto">

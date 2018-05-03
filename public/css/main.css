@@ -85,7 +85,7 @@ hr {
 .headernav {
     width: inherit;
     position:fixed;
-    margin-top: 24px;
+    /* margin-top: 24px; */
     z-index: 100000;
 }
 

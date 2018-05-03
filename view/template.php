@@ -32,43 +32,42 @@
 
     <div class="mobile-container m-auto">
 
-        <img src="./public/img/status-bar.png" class="status-bar" alt="">
+            <!-- <?php if(!isset($headernav)){echo '<div class="p-4"></div>';}?> -->
 
-        <?php if(!isset($headernav)){echo '<div class="p-4"></div>';}?>
+            <?php if (isset($headernav) AND $headernav === 'activate') { ?>
+                        <nav class="navbar navbar-dark noob-color headernav d-flex justify-content-between">
 
-        <?php if (isset($headernav) AND $headernav === 'activate') { ?>
-                    <nav class="navbar navbar-dark noob-color headernav d-flex justify-content-between">
+                            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
 
-                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                            <a class="navbar-brand title-def " href="#">Noobtionary</a>
 
-                        <a class="navbar-brand title-def " href="#">Noobtionary</a>
+                            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                                <ul class="navbar-nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?action=newOnes">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?action=yourDef"> <?php if(isset($_SESSION['name'])){echo $_SESSION['name'];}else{echo "Your Definitions";}?> </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?action=editAccount">Edit account</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="index.php?action=logout">logout</a>
+                                    </li>
+                                </ul>
+                            </div>
 
-                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                            <ul class="navbar-nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?action=newOnes">Home</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?action=yourDef"> <?php if(isset($_SESSION['name'])){echo $_SESSION['name'];}else{echo "Your Definitions";}?> </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?action=editAccount">Edit account</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.php?action=logout">logout</a>
-                                </li>
-                            </ul>
-                        </div>
+                            <form class="form-inline waves-effect waves-light">
+                                <a href="./index.php?action=searchPage"><i class="zmdi zmdi-search zmdi-hc-2x"></i></a>
+                           </form>
+                    </nav>
 
-                        <form class="form-inline waves-effect waves-light">
-                            <a href="./index.php?action=searchPage"><i class="zmdi zmdi-search zmdi-hc-2x"></i></a>
-                       </form>
-                </nav>
+            <?php } ?>
 
-        <?php } ?>
 
             <?= $content ?>
 

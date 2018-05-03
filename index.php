@@ -93,7 +93,12 @@ try {
 
     }
     else {
-        login();
+        if(isset($_GET['action']) AND $_GET['action'] == 'signin'){
+            signin();
+        }
+        else {
+            login();
+        }
     }
 }
 catch(Exception $e) {
